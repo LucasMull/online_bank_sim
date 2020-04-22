@@ -2,24 +2,33 @@
 // Include config file
 require_once "config.php";
 
-$agency = $account = $password = "";
+$agency = trim($_POST['agency']);
 $agency_err = $account_err = $password_err = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (empty(trim($_POST['agency']))) {
+        if (empty($agency)) {
                 $agency_err = "Please enter your agency.";
-        } else if (strlen(trim($_POST['agency'])) != 5) {
+        } else if (strlen($agency) != 5) {
                 $agency_err = "Invalid agency, please check your spelling.";
         } else {
-                $password = $_POST['password'];
-                $sql="SELECT acc FROM new_". trim($_POST['agency']) ." WHERE psw = '$password' ";
-                $result = mysqli_query($conn, $sql);
-                if (mysqli_num_rows($result) == 1) {
-                        echo "Welcome ". trim($_POST['agency']);
-                        echo " Success..";
-                } else {
-                        echo " Error..";
+                $sql="SELECT * FROM new_$agency WHERE psw = ? AND acc = ?";
+                if($stmt = mysqli_prepare($conn, $sql)){
+                        mysqli_stmt_bind_param($stmt,"ss", $param_password, $param_account);
+                        $param_account = trim($_POST['account']);
+                        $param_password = $_POST['password'];
+                       
+                        if(mysqli_stmt_execute($stmt)) {
+                                mysqli_stmt_store_result($stmt);
+
+                                if(mysqli_stmt_num_rows($stmt) == 1) {
+                                    $account = trim($_POST['account']);
+                                    $password = $_POST['password'];
+                                    echo "Welcome, $account!";
+                                } else {
+                                    echo "Couldn't match password with account or account doesn't exist";
+                                }
+                        }
                 }
         }
-}
+} else echo "Something wrong happened, sorry...";
 ?>
