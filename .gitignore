@@ -1,2 +1,6 @@
 *.swp
 clients
+config.php
+setDB.php
+signup.html
+action_page2.php
