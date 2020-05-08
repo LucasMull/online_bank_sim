@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+.wrapper {
+    border: 3px solid #73AD21;
+}
+
+.vertical-center {
+    text-align: center;
+    position: absolute;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+</style>
 <head>
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="swap.js"></script>
     <title>Login</title>
 </head>
 <body>
-    <div class="wrapper" align="center">
-        <h2>Login</h2>
-        <p>Please fill this form to log into your account.</p>
-        <form action="action_page.php" method="post">
+    <div class="swap vertical-center">
+    <p><a href="signup.html" id="signup">SignUp</a></p>
+    <div class="wrapper">
+        <h2 class="a">Login</h2>
+        <p id="def" class="a">Please fill this form to log into your account.</p>
+        <form action="action_page.php" method="post" class="a">
             <label>Agency</label><br>
             <input type="text" name="agency" id="agc"><br>
             <label>Account</label><br>
             <input type="text" name="account" id="acc"><br>
             <label>Password</label><br>
             <input type="password" name="password" id="psw"><br>
-            <p><button type="submit" value="Submit">Login</button></p><br>
-            <p><a href="signup.html">SignUp</a></p>
+            <p><button id="submit" type="submit" value="Submit">Login</button></p><br>
         </form>
+    </div>
     </div>
 </body>
 </html>
