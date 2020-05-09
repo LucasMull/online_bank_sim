@@ -2,7 +2,8 @@
 <html lang="en">
 <style>
 .wrapper {
-    border: 3px solid #73AD21;
+    border: 3px solid black;
+    background: lightgrey;
 }
 
 .vertical-center {
@@ -14,26 +15,30 @@
     -ms-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
 }
+
+a:hover {
+    background: yellow;
+}
 </style>
 <head>
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="swap.js"></script>
+    <script type="text/javascript" src="js/swap.js"></script>
     <title>Login</title>
 </head>
 <body>
-    <div class="swap vertical-center">
-    <p><a href="signup.html" id="signup">SignUp</a></p>
+    <div class="vertical-center">
+    <p><a id="signup">SignUp</a></p>
     <div class="wrapper">
         <h2 class="a">Login</h2>
         <p id="def" class="a">Please fill this form to log into your account.</p>
-        <form action="action_page.php" method="post" class="a">
+        <form action="tryLogin.php" method="post" class="a">
             <label>Agency</label><br>
             <input type="text" name="agency" id="agc"><br>
             <label>Account</label><br>
             <input type="text" name="account" id="acc"><br>
             <label>Password</label><br>
-            <input type="password" name="password" id="psw"><br>
+            <input type="password" name="password" id="psw">
             <p><button id="submit" type="submit" value="Submit">Login</button></p><br>
         </form>
     </div>
