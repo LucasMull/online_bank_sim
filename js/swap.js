@@ -16,6 +16,8 @@ let $SignUpForm = $("<label>Fullname</label><br>" +
 "<input type=\"password\" name=\"password\" id=\"psw\"><br>" +
 "<label>Verify Password</label><br>" +
 "<input type=\"password\" name=\"verify_psw\" id=\"vpsw\"><br>" +
+"<label>CPF</label><br>" +
+"<input type=\"text\" name=\"cpf\" id=\"cpf\"><br>" +
 "<p><button type=\"submit\" value=\"Submit\">SignIn</button></p><br>"
 );
 
